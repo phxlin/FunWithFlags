@@ -31,8 +31,7 @@ class CountryListAdapter(var countries: ArrayList<Country>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(country: Country) {
-            binding.countryName.text = country.countryName
-            binding.capital.text = country.capital
+            binding.country = country
             binding.imageView.loadImage(country.flag, getProgressDrawable(binding.root.context))
         }
     }
