@@ -8,12 +8,12 @@ import me.yufanlin.funwithflags.model.Country
 import me.yufanlin.funwithflags.util.getProgressDrawable
 import me.yufanlin.funwithflags.util.loadImage
 
-class CountryListAdapter(var countries: ArrayList<Country>) :
+class CountryListAdapter(private var countries: ArrayList<Country>) :
     RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
 
-    fun updateCountries(NewCountries: List<Country>) {
+    fun updateCountries(newCountries: List<Country>) {
         countries.clear()
-        countries.addAll(NewCountries)
+        countries.addAll(newCountries)
         notifyDataSetChanged()
     }
 

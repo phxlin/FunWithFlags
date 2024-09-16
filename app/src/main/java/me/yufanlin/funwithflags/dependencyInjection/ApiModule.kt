@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class ApiModule {
-    private val BASE_URL = "http://raw.githubusercontent.com"
 
     @Provides
     fun provideCountriesApi(): CountryApi = Retrofit.Builder()
@@ -20,4 +19,8 @@ class ApiModule {
 
     @Provides
     fun provideCountriesService(): CountriesService = CountriesService()
+
+    companion object {
+        private const val BASE_URL = "https://raw.githubusercontent.com"
+    }
 }

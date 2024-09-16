@@ -10,7 +10,7 @@ import me.yufanlin.funwithflags.viewmodel.ListViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: ListViewModel
+    private lateinit var viewModel: ListViewModel
     private val countriesAdapter = CountryListAdapter(arrayListOf())
     private lateinit var binding: ActivityMainBinding
 
@@ -35,21 +35,21 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
     }
 
-    fun observeViewModel() {
-        viewModel.countries.observe(this, { countries ->
+    private fun observeViewModel() {
+        viewModel.countries.observe(this) { countries ->
             countries?.let {
                 binding.countriesList.visibility = View.VISIBLE
                 countriesAdapter.updateCountries(it)
             }
-        })
+        }
 
-        viewModel.countryLoadError.observe(this, { isError ->
+        viewModel.countryLoadError.observe(this) { isError ->
             isError?.let {
                 binding.listError.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
             }
-        })
+        }
 
-        viewModel.loading.observe(this, { isLoading ->
+        viewModel.loading.observe(this) { isLoading ->
             isLoading?.let {
                 binding.loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) {
@@ -57,6 +57,6 @@ class MainActivity : AppCompatActivity() {
                     binding.countriesList.visibility = View.GONE
                 }
             }
-        })
+        }
     }
 }
