@@ -3,7 +3,12 @@ package me.yufanlin.funwithflags.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.yufanlin.funwithflags.dependencyInjection.DaggerApiComponent
 import me.yufanlin.funwithflags.model.CountriesService
 import me.yufanlin.funwithflags.model.Country
@@ -19,8 +24,7 @@ class ListViewModel : ViewModel() {
     }
 
     private var job: Job? = null
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable
-        ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception: ${throwable.localizedMessage}")
     }
 
