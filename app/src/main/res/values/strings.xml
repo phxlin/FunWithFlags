@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FunWithFlags</string>
+    <string name="error_msg">An error occurred while loading the data.</string>
+    <string name="flag">FLAG</string>
+</resources>
