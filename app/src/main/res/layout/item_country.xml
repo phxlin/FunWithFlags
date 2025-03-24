@@ -9,7 +9,7 @@
             android:id="@+id/image_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:contentDescription="@string/flag"
             android:padding="@dimen/standard_padding">
 
@@ -18,23 +18,32 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="6"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/standard_padding">
 
             <TextView
-                android:id="@+id/country_name"
+                android:id="@+id/name_region"
                 style="@style/Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/country_capital"
+                android:id="@+id/capital"
                 style="@style/Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/code"
+            style="@style/Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_weight="1" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

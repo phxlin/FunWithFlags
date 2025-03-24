@@ -10,21 +10,15 @@ import me.yufanlin.funwithflags.databinding.ItemCountryBinding
 import me.yufanlin.funwithflags.util.getProgressDrawable
 import me.yufanlin.funwithflags.util.loadImage
 
-class CountryListAdapter : RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
+class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountryViewHolder>() {
 
-    private val diff = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Country>() {
+    val diff = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Country>() {
         override fun areItemsTheSame(oldItem: Country, newItem: Country) =
-            oldItem.countryName == newItem.countryName
+            oldItem.name == newItem.name
 
         override fun areContentsTheSame(oldItem: Country, newItem: Country) =
             oldItem == newItem
     })
-
-
-    fun updateCountries(newCountries: List<Country>) {
-        diff.submitList(emptyList())
-        diff.submitList(newCountries)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CountryViewHolder(
         ItemCountryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -39,10 +33,11 @@ class CountryListAdapter : RecyclerView.Adapter<CountryListAdapter.CountryViewHo
     inner class CountryViewHolder(private val binding: ItemCountryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(country: Country) {
-            binding.countryName.text = isEmpty(country.countryName)
-            binding.countryCapital.text = isEmpty(country.capital)
-            binding.imageView.loadImage(country.flag, getProgressDrawable(binding.root.context))
+        fun bind(country: Country) = with(binding) {
+            imageView.loadImage(country.flag, getProgressDrawable(binding.root.context))
+            nameRegion.text = StringBuilder().append(isEmpty(country.name) + ", " + isEmpty(country.region))
+            capital.text = isEmpty(country.capital)
+            code.text = isEmpty(country.code)
         }
 
         private fun isEmpty(str: String?) = str?.ifEmpty { "N/A" }

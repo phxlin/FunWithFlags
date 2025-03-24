@@ -43,9 +43,8 @@ def lifeCycleExtensionVersion = '1.1.1'
 def swipeRefreshLayoutVersion = '1.1.0'
 def supportVersion = '28.0.0'
 def retrofitVersion = '2.9.0'
-def daggerVersion = '2.51.1'
+def okhttpVersion = '4.9.3'
 def glideVersion = '4.8.0'
-def mockitoVersion = '2.11.0'
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -61,25 +60,23 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$supportVersion"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion"
 
-    //glide
+    // Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 
-    //retrofit
+    // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
 
-    //coroutine
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
+
+    // Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
-
-    //dagger
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-
-    //mockito
-    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
 
     testImplementation 'android.arch.core:core-testing:1.1.1'
     testImplementation 'junit:junit:4.13.2'
