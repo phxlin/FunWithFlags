@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">FunWithFlags</string>
-    <string name="error_msg">An error occurred while loading the data.</string>
-    <string name="flag">FLAG</string>
+    <string name="preview_unavailable">Preview unavailable</string>
+    <string name="name_region">NAME_REGION</string>
+    <string name="capital">CAPITAL</string>
+    <string name="code">CODE</string>
 </resources>

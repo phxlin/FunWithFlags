@@ -34,10 +34,17 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountryViewHolder
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(country: Country) = with(binding) {
-            imageView.loadImage(country.flag, getProgressDrawable(binding.root.context))
-            nameRegion.text = StringBuilder().append(isEmpty(country.name) + ", " + isEmpty(country.region))
-            capital.text = isEmpty(country.capital)
-            code.text = isEmpty(country.code)
+            ivFlagImage.loadImage(
+                country.flag,
+                getProgressDrawable(binding.root.context)
+            )
+            tvNameRegion.text = StringBuilder().append(
+                isEmpty(country.name)
+                        + ", "
+                        + isEmpty(country.region)
+            )
+            tvCapital.text = isEmpty(country.capital)
+            tvCode.text = isEmpty(country.code)
         }
 
         private fun isEmpty(str: String?) = str?.ifEmpty { "N/A" }
