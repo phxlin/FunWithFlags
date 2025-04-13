@@ -36,7 +36,7 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountryViewHolder
         fun bind(country: Country) = with(binding) {
             ivFlagImage.loadImage(
                 country.flag,
-                getProgressDrawable(binding.root.context)
+                getProgressDrawable(itemView.context)
             )
             tvNameRegion.text = StringBuilder().append(
                 isEmpty(country.name)
